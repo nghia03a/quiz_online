@@ -1,7 +1,14 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* 62.5% trick: 1rem = 10px */
+html {
+  font-size: 62.5%;
 }
 
 :root {
@@ -13,14 +20,16 @@
   --accent: #1a1a1a;
   --card-bg: rgba(255, 255, 255, 0.72);
   --input-bg: rgba(255, 255, 255, 0.6);
-  --shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
-  --radius: 18px;
+  --shadow: 0 2.4rem 6.4rem rgba(0, 0, 0, 0.18);
+  --radius: 1.8rem;
   --transition: 0.22s ease;
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.6rem; /* = 16px */
   min-height: 100vh;
+  min-height: 100dvh; /* dynamic viewport height cho mobile */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,15 +60,21 @@ body {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: 16px;
+  padding: 1.6rem;
   display: flex;
   justify-content: center;
   animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(2.8rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Card */
@@ -67,51 +82,55 @@ body {
   background: var(--card-bg);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(255,255,255,0.55);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 44px 40px 36px;
+  padding: 4.4rem 4rem 3.6rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 40rem;
 }
 
 /* Title */
 .title {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 26px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 2.6rem;
   font-weight: 600;
   color: var(--black);
-  letter-spacing: 2px;
+  letter-spacing: 0.2rem;
   text-transform: uppercase;
-  margin-bottom: 28px;
+  margin-bottom: 2.8rem;
   line-height: 1.2;
 }
 
 /* Fields */
 .field {
-  margin-bottom: 18px;
+  margin-bottom: 1.8rem;
 }
 
 .field label {
   display: block;
-  font-size: 13px;
+  font-size: 1.3rem;
   font-weight: 500;
   color: var(--accent);
-  margin-bottom: 7px;
-  letter-spacing: 0.2px;
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.02rem;
 }
 
 .field input {
   width: 100%;
-  padding: 11px 14px;
+  padding: 1.1rem 1.4rem;
   background: var(--input-bg);
   border: 1px solid var(--gray-2);
-  border-radius: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  border-radius: 1rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.6rem; /* >= 16px để tránh auto-zoom trên iOS */
   color: var(--black);
   outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+  -webkit-appearance: none; /* loại bỏ style mặc định iOS */
+  appearance: none;
 }
 
 .field input::placeholder {
@@ -120,26 +139,32 @@ body {
 
 .field input:focus {
   border-color: var(--black);
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.07);
-  background: rgba(255,255,255,0.85);
+  box-shadow: 0 0 0 0.3rem rgba(0, 0, 0, 0.07);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 /* Button */
 .btn-register {
   width: 100%;
-  padding: 13px;
+  padding: 1.4rem;
   background: var(--black);
   color: var(--white);
   border: none;
-  border-radius: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
+  border-radius: 1rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.5rem;
   font-weight: 500;
   cursor: pointer;
-  letter-spacing: 1px;
+  letter-spacing: 0.1rem;
   text-transform: uppercase;
-  margin-top: 6px;
-  transition: background var(--transition), transform var(--transition);
+  margin-top: 0.6rem;
+  /* Chiều cao tối thiểu để dễ tap trên mobile */
+  min-height: 4.8rem;
+  transition:
+    background var(--transition),
+    transform var(--transition);
+  /* Loại bỏ highlight mặc định trên mobile */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-register:hover {
@@ -149,14 +174,15 @@ body {
 
 .btn-register:active {
   transform: translateY(0);
+  background: #111;
 }
 
 /* Login link */
 .login-link {
   text-align: center;
-  font-size: 13px;
+  font-size: 1.3rem;
   color: var(--gray-3);
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .login-link a {
@@ -164,7 +190,7 @@ body {
   font-weight: 500;
   text-decoration: none;
   border-bottom: 1px solid var(--black);
-  padding-bottom: 1px;
+  padding-bottom: 0.1rem;
   transition: opacity var(--transition);
 }
 
@@ -172,13 +198,47 @@ body {
   opacity: 0.6;
 }
 
-/* Responsive */
+/* ── Responsive ─────────────────────────────────── */
+
+/* Tablet nhỏ / điện thoại ngang */
 @media (max-width: 480px) {
   .card {
-    padding: 32px 24px 28px;
+    padding: 3.2rem 2.4rem 2.8rem;
   }
 
   .title {
-    font-size: 24px;
+    font-size: 2.2rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .field {
+    margin-bottom: 1.4rem;
+  }
+}
+
+/* Điện thoại nhỏ (< 360px) */
+@media (max-width: 360px) {
+  .card {
+    padding: 2.8rem 2rem 2.4rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
+
+/* Landscape mobile: giảm padding để card vừa màn hình */
+@media (max-height: 600px) and (orientation: landscape) {
+  .card {
+    padding: 2rem 3.2rem 1.6rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .field {
+    margin-bottom: 1rem;
   }
 }
