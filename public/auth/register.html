@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đăng ký</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="register.css" />
+</head>
+<body>
+
+  <!-- Hình nền: thay 'bg.jpg' bằng tên file ảnh của bạn -->
+  <div class="bg" style="background-image: url('bg.jpg');"></div>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <div class="card">
+
+      <h1 class="title">ĐĂNG KÝ</h1>
+
+      <form id="registerForm">
+
+        <div class="field">
+          <label for="name">Họ và tên</label>
+          <input type="text" id="name" name="name" placeholder="Nguyễn Văn A" required />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="example@gmail.com" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Mật khẩu</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required />
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">Xác nhận mật khẩu</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required />
+        </div>
+
+        <button type="submit" class="btn-register">Đăng ký</button>
+
+      </form>
+
+      <p class="login-link">Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
+
+    </div>
+  </div>
+
+  <script src="register.js"></script>
+
+</body>
+</html>
